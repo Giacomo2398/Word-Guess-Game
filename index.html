@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+
+            <title>Hangman Game</title>
+            <script src="assets/javascript/game.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="assets/css/reset.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+            <link rel="stylesheet" href="assets/css/style.css">
+            <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        </head>
+        <body>
+                <div class="title">
+                        <h1>HANGMAN</h1>
+                        <h2>Coding Edition</h2>
+                    </div>
+            <br>
+            <button type="button" id="start" onclick="start()" class="btn btn-dark"> Click here to start</button>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                        <div id="loader"></div>
+                        <div id="leftbox" class="col-lg-3">
+                            <img id="youwin-image" src="assets/images/you-win.jpg" alt="Winning Image"/>
+                            <img id="gameover-image" src="assets/images/gameover.jpg" alt="Game Over Image" />
+                            <p id="pressKeyTryAgain">Press Any Key to Try Again!</p>
+                            <p id="binary"></p>
+                        </div>
+                        <div id="rightbox" class="col-lg-3">
+                            <div id="hangman">
+                                <p>Press any key to get started!</p>
+                                <p>Wins</p>
+                                <p id="totalWins"><p>
+                                <p>Current Word</p>
+                                <p id="currentWord"></p>>
+                                <p>Guesses Remaining</p>
+                                <p id="remainingGuesses"></p>
+                                <p>Letters Guessed</p>
+                                <p id="guessedLetters"></p>
+                            </div>
+                        </div>
+                    <div class="col-lg-3"></div>
+                </div>    
+            </div>
+            <script>
+
+                var time;
+
+                function start() {
+                    document.getElementById('start').style.display = "none";
+                    document.getElementById('loader').style.display = "block";
+                    time = setTimeout(displaydiv, 2000);
+                };
+
+                function displaydiv() {
+                    document.getElementById('loader').style.display = "none";
+                    document.getElementById('leftbox').style.display = "block";
+                    document.getElementById('rightbox').style.display = "block";
+                    typeWriter();
+                };
+
+            var i = 0
+            var txt = '01000111 01101111 01101111 01100100 00100000 01001100 01110101 01100011 01101011 00100000 00100110 00100000 01001000 01100001 01110110 01100101 00100000 01000110 01110101 01101110 00100001'
+            var speed = 30;
+
+            function typeWriter() {
+                if (i < txt.length) {
+                    document.getElementById('binary').innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                };
+            };
+            
+            resetGame();
+            updateDisplay();
+            
+            </script>
+        </body>
+
+    </html>
