@@ -44,6 +44,7 @@ function updateDisplay() {
     if(remainingGuesses <= 0) {
         document.getElementById("gameover-image").style.cssText = "display: block";
         document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
+        document.getElementById('binary').style.cssText ="display:none";
         hasFinished = true;
     }
 };
